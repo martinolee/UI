@@ -23,6 +23,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var marketingButton: UIButton!
     @IBOutlet weak var financeButton: UIButton!
     
+    @IBOutlet weak var bannerCollectionView: UICollectionView!
+    @IBOutlet weak var bannerCollcetionViewHeight: NSLayoutConstraint!
+    
+    var timer: DispatchSourceTimer?
+    
     struct Menu {
         var title: String
         var button: UIButton
@@ -50,21 +55,101 @@ class ViewController: UIViewController {
             moverWidthConstraint.constant = width + 10
         }
         
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: { [weak self] in
             self?.view.layoutIfNeeded()
-        }
+        }, completion: nil)
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(bannerCollectionView.frame.size.width)
+        bannerCollcetionViewHeight.constant = bannerCollectionView.frame.size.width / 2
         
         selectMenu(entireButton)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let targetIndex = IndexPath(item: 5000, section: 0)
+        bannerCollectionView.selectItem(at: targetIndex, animated: false, scrollPosition: .centeredHorizontally)
+        
+        resumeTimer()
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timer?.suspend()
+    }
+    
+    func resumeTimer() {
+        if timer == nil {
+            timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
+            timer?.schedule(deadline: .now() + 5, repeating: .seconds(5))
+            timer?.setEventHandler(handler: { [weak self] in
+                if var indexPath = self?.bannerCollectionView.indexPathsForVisibleItems.first {
+                    indexPath.item += 1
+                    
+                    self?.bannerCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+                }
+            })
+        }
+        timer?.resume()
+    }
+    
 }
+
+extension ViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10000
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.identifier, for: indexPath) as! BannerCollectionViewCell
+        
+        let imageName = "banner\(indexPath.row % 5)"
+        cell.bannerImageView.image = UIImage(named: imageName)
+        
+        return cell
+    }
+    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		723826FD205792D5008A70AB /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723826FC205792D5008A70AB /* BannerCollectionViewCell.swift */; };
 		72A938E32052594400E040DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A938E22052594400E040DC /* AppDelegate.swift */; };
 		72A938E52052594400E040DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A938E42052594400E040DC /* ViewController.swift */; };
 		72A938E82052594400E040DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72A938E62052594400E040DC /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		723826FC205792D5008A70AB /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		72A938DF2052594400E040DC /* SecondBaeMin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecondBaeMin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72A938E22052594400E040DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72A938E42052594400E040DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		723826FB205792A0008A70AB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				723826FC205792D5008A70AB /* BannerCollectionViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		72A938D62052594400E040DC = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		72A938E12052594400E040DC /* SecondBaeMin */ = {
 			isa = PBXGroup;
 			children = (
+				723826FB205792A0008A70AB /* cell */,
 				72A938E22052594400E040DC /* AppDelegate.swift */,
 				72A938E42052594400E040DC /* ViewController.swift */,
 				72A938E62052594400E040DC /* Main.storyboard */,
@@ -136,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				723826FD205792D5008A70AB /* BannerCollectionViewCell.swift in Sources */,
 				72A938E52052594400E040DC /* ViewController.swift in Sources */,
 				72A938E32052594400E040DC /* AppDelegate.swift in Sources */,
 			);
