@@ -8,7 +8,23 @@
 
 import UIKit
 
+struct Course {
+    let title: String
+    let imageName: String
+    let startDate: Date
+    let endDate: Date
+    let tags: [String]
+    let location: String
+}
+
 class ViewController: UIViewController {
+    var courseList = [
+        Course(title: "Swift4를 활용한 iOS 앱 개발 CAMP", imageName: "course0", startDate: Date(), endDate: Date(), tags: ["iOS", "Swift4"], location: "리틀스타 10-A"),
+        Course(title: "나만의 iOS 앱 개발 입문 CAMP", imageName: "course1", startDate: Date(), endDate: Date(), tags: ["iOS", "Swift4"], location: "리틀스타 10-A"),
+        Course(title: "Unity 5 게임 제작 CAMP", imageName: "course2", startDate: Date(), endDate: Date(), tags: ["iOS", "Swift4"], location: "리틀스타 10-A"),
+        Course(title: "JavaScript 정복 프로젝트 CAMP", imageName: "course3", startDate: Date(), endDate: Date(), tags: ["iOS", "Swift4"], location: "리틀스타 10-A"),
+        Course(title: "Node.js로 구현하는 쇼핑몰 프로젝트 CAMP", imageName: "course4", startDate: Date(), endDate: Date(), tags: ["iOS", "Swift4"], location: "리틀스타 10-A")
+]
     @IBOutlet weak var moverWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var entireButtonCenterConstraint: NSLayoutConstraint!
@@ -26,7 +42,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var bannerCollectionView: UICollectionView!
     @IBOutlet weak var bannerCollcetionViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var courseCollectionView: UICollectionView!
+    
     var timer: DispatchSourceTimer?
+    
+    lazy var df: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "M월 d일(E)"
+        
+        return f
+    }()
     
     struct Menu {
         var title: String
@@ -105,23 +130,66 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10000
+        switch collectionView {
+        case bannerCollectionView:
+            return 10000
+        case courseCollectionView:
+            return courseList.count
+        default:
+            return 0
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.identifier, for: indexPath) as! BannerCollectionViewCell
+        switch collectionView {
+        case bannerCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.identifier, for: indexPath) as! BannerCollectionViewCell
+            
+            let imageName = "banner\(indexPath.row % 5)"
+            cell.bannerImageView.image = UIImage(named: imageName)
+            
+            return cell
+        case courseCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CourseCollectionViewCell.identifier, for: indexPath) as! CourseCollectionViewCell
+            
+            let course = courseList[indexPath.item]
+            
+            cell.courseImageView.image = UIImage(named: course.imageName)
+            cell.courseNameLabel.text = course.title
+            
+            if let start = df.string(for: course.startDate), let end = df.string(for: course.endDate) {
+                cell.periodLabel.text = "\(start) ~ \(end)"
+            }
+            
+            cell.tagLabel.text = "#" + course.tags.joined(separator: " #")
+            cell.locationLabel.text = course.location
+            
+            return cell
+        default:
+            fatalError()
+        }
         
-        let imageName = "banner\(indexPath.row % 5)"
-        cell.bannerImageView.image = UIImage(named: imageName)
-        
-        return cell
     }
     
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
+        switch collectionView {
+        case bannerCollectionView:
+            return collectionView.frame.size
+        case courseCollectionView:
+            guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {
+                return CGSize.zero
+            }
+            
+            let width = (collectionView.bounds.width - (layout.sectionInset.left + layout.sectionInset.right + layout.minimumInteritemSpacing)) / 2
+            
+            return CGSize(width: width, height: width * 1.5)
+        default:
+            return CGSize.zero
+        }
     }
 }
 

@@ -13,6 +13,7 @@
 		72A938E82052594400E040DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72A938E62052594400E040DC /* Main.storyboard */; };
 		72A938EA2052594400E040DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72A938E92052594400E040DC /* Assets.xcassets */; };
 		72A938ED2052594400E040DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72A938EB2052594400E040DC /* LaunchScreen.storyboard */; };
+		72AB0294205F4FDB0074BCEF /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0293205F4FDB0074BCEF /* CourseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		72A938E92052594400E040DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72A938EC2052594400E040DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72A938EE2052594400E040DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72AB0293205F4FDB0074BCEF /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				723826FC205792D5008A70AB /* BannerCollectionViewCell.swift */,
+				72AB0293205F4FDB0074BCEF /* CourseCollectionViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				723826FD205792D5008A70AB /* BannerCollectionViewCell.swift in Sources */,
+				72AB0294205F4FDB0074BCEF /* CourseCollectionViewCell.swift in Sources */,
 				72A938E52052594400E040DC /* ViewController.swift in Sources */,
 				72A938E32052594400E040DC /* AppDelegate.swift in Sources */,
 			);
