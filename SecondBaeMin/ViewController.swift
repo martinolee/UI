@@ -83,6 +83,15 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: { [weak self] in
             self?.view.layoutIfNeeded()
         }, completion: nil)
+        
+        for _ in 0..<10 {
+            let a = Int(arc4random_uniform(UInt32(courseList.count)))
+            let b = Int(arc4random_uniform(UInt32(courseList.count)))
+            courseList.swapAt(a, b)
+        }
+        
+        let section = IndexSet(integer: 0)
+        courseCollectionView.reloadSections(section)
 
     }
     
