@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		723826FD205792D5008A70AB /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723826FC205792D5008A70AB /* BannerCollectionViewCell.swift */; };
+		7282C0CC206909F100CA3120 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7282C0CB206909F100CA3120 /* DetailViewController.swift */; };
 		72A938E32052594400E040DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A938E22052594400E040DC /* AppDelegate.swift */; };
 		72A938E52052594400E040DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A938E42052594400E040DC /* ViewController.swift */; };
 		72A938E82052594400E040DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72A938E62052594400E040DC /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		723826FC205792D5008A70AB /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		7282C0CB206909F100CA3120 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		72A938DF2052594400E040DC /* SecondBaeMin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecondBaeMin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72A938E22052594400E040DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72A938E42052594400E040DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				723826FB205792A0008A70AB /* cell */,
 				72A938E22052594400E040DC /* AppDelegate.swift */,
 				72A938E42052594400E040DC /* ViewController.swift */,
+				7282C0CB206909F100CA3120 /* DetailViewController.swift */,
 				72A938E62052594400E040DC /* Main.storyboard */,
 				72A938E92052594400E040DC /* Assets.xcassets */,
 				72A938EB2052594400E040DC /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 			files = (
 				723826FD205792D5008A70AB /* BannerCollectionViewCell.swift in Sources */,
 				72AB0294205F4FDB0074BCEF /* CourseCollectionViewCell.swift in Sources */,
+				7282C0CC206909F100CA3120 /* DetailViewController.swift in Sources */,
 				72A938E52052594400E040DC /* ViewController.swift in Sources */,
 				72A938E32052594400E040DC /* AppDelegate.swift in Sources */,
 			);

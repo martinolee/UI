@@ -95,6 +95,17 @@ class ViewController: UIViewController {
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case .some("detailSegue"):
+            if let vc = segue.destination as? DetailViewController, let cell = sender as? UICollectionViewCell, let indexPath = courseCollectionView.indexPath(for: cell) {
+                vc.course = courseList[indexPath.item]
+            }
+        default:
+            super.prepare(for: segue, sender: sender)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
